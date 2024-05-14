@@ -1,0 +1,29 @@
+syntax = "proto3";
+package notificationspb;
+
+service NotificationsService {
+  rpc NotifyOrderCreated(NotifyOrderCreatedRequest) returns (NotifyOrderCreatedResponse) {}
+  rpc NotifyOrderCanceled(NotifyOrderCanceledRequest) returns (NotifyOrderCanceledResponse) {}
+  rpc NotifyOrderReady(NotifyOrderReadyRequest) returns (NotifyOrderReadyResponse) {}
+}
+
+// notify order created
+message NotifyOrderCreatedRequest {
+  string order_id = 1;
+  string customer_id = 2;
+}
+message NotifyOrderCreatedResponse {}
+
+// notify order canceled
+message NotifyOrderCanceledRequest {
+  string order_id = 1;
+  string customer_id = 2;
+}
+message NotifyOrderCanceledResponse {}
+
+// notify order ready
+message NotifyOrderReadyRequest {
+  string order_id = 1;
+  string customer_id = 2;
+}
+message NotifyOrderReadyResponse {}

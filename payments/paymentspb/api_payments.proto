@@ -1,0 +1,55 @@
+syntax = "proto3";
+package paymentspb;
+
+service PaymentsService {
+  rpc AuthorizePayment(AuthorizePaymentRequest) returns (AuthorizePaymentResponse) {}
+  rpc ConfirmPayment(ConfirmPaymentRequest) returns (ConfirmPaymentResponse) {}
+  rpc CreateInvoice(CreateInvoiceRequest) returns (CreateInvoiceResponse) {}
+  rpc AdjustInvoice(AdjustInvoiceRequest) returns (AdjustInvoiceResponse) {}
+  rpc PayInvoice(PayInvoiceRequest) returns (PayInvoiceResponse) {}
+  rpc CancelInvoice(CancelInvoiceRequest) returns (CancelInvoiceResponse) {}
+}
+
+// authorize payment
+message AuthorizePaymentRequest {
+  string customer_id = 1;
+  double amount = 2;
+}
+message AuthorizePaymentResponse {
+  string id = 1;
+}
+
+// confirm payment
+message ConfirmPaymentRequest {
+  string id = 1;
+}
+message ConfirmPaymentResponse {}
+
+// create invoice
+message CreateInvoiceRequest {
+  string order_id = 1;
+  string payment_id = 2;
+  double amount = 3;
+}
+message CreateInvoiceResponse {
+  string id = 1;
+}
+
+// adjust invoice
+message AdjustInvoiceRequest {
+  string id = 1;
+  double amount = 2;
+}
+message AdjustInvoiceResponse {}
+
+// pay invoice
+message PayInvoiceRequest {
+  string id = 1;
+}
+message PayInvoiceResponse {}
+
+// cancel invoice
+message CancelInvoiceRequest {
+  string id = 1;
+}
+message CancelInvoiceResponse {}

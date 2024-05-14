@@ -1,0 +1,52 @@
+syntax = "proto3";
+package customerspb;
+
+service CustomersService {
+  rpc RegisterCustomer(RegisterCustomerRequest) returns (RegisterCustomerResponse) {}
+  rpc AuthorizeCustomer(AuthorizeCustomerRequest) returns (AuthorizeCustomerResponse) {}
+  rpc GetCustomer(GetCustomerRequest) returns (GetCustomerResponse) {}
+  rpc EnableCustomer(EnableCustomerRequest) returns (EnableCustomerResponse) {}
+  rpc DisableCustomer(DisableCustomerRequest) returns (DisableCustomerResponse) {}
+}
+
+message Customer {
+  string id = 1;
+  string name = 2;
+  string sms_number = 3;
+  bool enabled = 4;
+}
+
+// register customer
+message RegisterCustomerRequest {
+  string name = 1;
+  string sms_number = 2;
+}
+message RegisterCustomerResponse {
+  string id = 1;
+}
+
+// authorize customer
+message AuthorizeCustomerRequest {
+  string id = 1;
+}
+message AuthorizeCustomerResponse {}
+
+// get customer
+message GetCustomerRequest {
+  string id = 1;
+}
+message GetCustomerResponse {
+  Customer customer = 1;
+}
+
+// enable customer
+message EnableCustomerRequest {
+  string id = 1;
+}
+message EnableCustomerResponse {}
+
+// disable customer
+message DisableCustomerRequest {
+  string id = 1;
+}
+message DisableCustomerResponse {}
